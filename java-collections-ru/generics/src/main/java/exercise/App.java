@@ -12,12 +12,9 @@ public class App {
         List<Map<String, String>> result = new ArrayList<>();
 
         for (var elem : list) {
-            StringBuilder str = new StringBuilder();
-            for (Map.Entry<String, String> book : elem.entrySet()) {
-                str.append(book.getKey()).append(book.getValue());
-            }
-            String word = getString(words);
-            if (str.toString().contains(word)) {
+            ArrayList<String> arrayList = getArray(elem);
+            ArrayList<String> arrayList2 = getArray(words);
+            if (arrayList.containsAll(arrayList2)) {
                 result.add(elem);
             }
         }
@@ -25,14 +22,14 @@ public class App {
         return result;
     }
 
-    public static String getString(Map<String, String> map) {
+    public static ArrayList<String> getArray(Map<String, String> map) {
 
-        StringBuilder str = new StringBuilder();
-        for (Map.Entry<String, String> el : map.entrySet()) {
-            str.append(el.getKey()).append(el.getValue());
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (Map.Entry<String, String> elem : map.entrySet()) {
+            arrayList.add(elem.getValue());
         }
 
-        return str.toString();
+        return arrayList;
     }
 
 }
