@@ -19,19 +19,17 @@ public final class App {
         // BEGIN
         app.get("/users", ctx -> {
             var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(0);
-            var per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(1);
+            var per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(5);
             int start = (page * per) - per;
             int end = (page * per);
 
             List<Map<String, String>> result = new ArrayList<>();
 
-            if (page * per <= USERS.size()) {
-                for (int i = start; i < end; i++) {
-                    result.add(USERS.get(i));
-                }
+            for (int i = start; i < end; i++) {
+                result.add(USERS.get(i));
             }
-            ctx.json(result);
 
+            ctx.json(result);
         });
         // END
 
