@@ -25,8 +25,10 @@ public final class App {
 
             List<Map<String, String>> result = new ArrayList<>();
 
-            for (int i = start; i < end; i++) {
-                result.add(USERS.get(i));
+            if (page * per <= USERS.size()) {
+                for (int i = start; i < end; i++) {
+                    result.add(USERS.get(i));
+                }
             }
             ctx.json(result);
 
