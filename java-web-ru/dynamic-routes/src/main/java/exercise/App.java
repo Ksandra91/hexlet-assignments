@@ -2,7 +2,6 @@ package exercise;
 
 import io.javalin.Javalin;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -22,14 +21,7 @@ public final class App {
         });
 
         // BEGIN
-
-        // END
-
-        app.get("/companies", ctx -> {
-            ctx.json(COMPANIES);
-        });
-
-        app.get("/users/{id}", ctx -> {
+        app.get("/companies/{id}", ctx -> {
             var id = ctx.pathParam("id");
             var res = COMPANIES.stream().flatMap(e -> e.entrySet().stream()).
                     filter(k -> k.getKey().equals(id)).collect(Collectors.toList());
@@ -41,10 +33,16 @@ public final class App {
             }
             ctx.json(res);
         });
+        // END
 
-//        app.get("/", ctx -> {
-//            ctx.result("open something like (you can change id): /companies/5");
-//        });
+        app.get("/companies", ctx -> {
+            ctx.json(COMPANIES);
+        });
+
+
+        app.get("/", ctx -> {
+            ctx.result("open something like (you can change id): /companies/5");
+        });
 
         return app;
 
