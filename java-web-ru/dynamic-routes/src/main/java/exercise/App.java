@@ -2,6 +2,7 @@ package exercise;
 
 import io.javalin.Javalin;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,15 +24,27 @@ public final class App {
         // BEGIN
         app.get("/companies/{id}", ctx -> {
             var id = ctx.pathParam("id");
-            var res = COMPANIES.stream().flatMap(e -> e.entrySet().stream()).
-                    filter(k -> k.getKey().equals(id)).collect(Collectors.toList());
+            Map res = new HashMap<>();
+
+//            var res = COMPANIES.stream().flatMap(e -> e.entrySet().stream()).
+//                    filter(k -> k.getKey().equals(id)).collect(Collectors.toList());
+
+            for (var e : COMPANIES) {
+                for (Map.Entry<String, String> entry : e.entrySet()) {
+                    String k = entry.getValue();
+                    if (k.equals(id)) {
+                        res = ((Map) entry);
+                    }
+                }
+            }
 
             if (res.isEmpty()) {
                 ctx.status(404);
                 ctx.result("Company not found");
 
+            } else {
+                ctx.json(res);
             }
-            ctx.json(res);
         });
         // END
 
