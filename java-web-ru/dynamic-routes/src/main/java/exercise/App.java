@@ -23,17 +23,16 @@ public final class App {
 
         // BEGIN
         app.get("/companies/{id}", ctx -> {
-            var id = ctx.pathParam("id");
+            var num = ctx.pathParam("id");
             Map res = new HashMap<>();
 
 //            var res = COMPANIES.stream().flatMap(e -> e.entrySet().stream()).
 //                    filter(k -> k.getKey().equals(id)).collect(Collectors.toList());
 
             for (var e : COMPANIES) {
-                for (Map.Entry<String, String> entry : e.entrySet()) {
-                    String k = entry.getValue();
-                    if (k.equals(id)) {
-                        res = ((Map) entry);
+                if (e.containsKey("id")) {
+                    if (e.get("id").equals(num)) {
+                        res = e;
                     }
                 }
             }
