@@ -14,13 +14,13 @@ public class PostsController {
 
     // BEGIN
     public static void index(Context ctx) {
-            var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
-            var pageSize = 5;
+        var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
+        var pageSize = 5;
 
-            var sliceOfPosts = PostRepository.findAll(page, pageSize);
+        var sliceOfPosts = PostRepository.findAll(page, pageSize);
 
-            var postPage = new PostsPage(sliceOfPosts, page);
-            ctx.render("posts/index.jte", model("page", postPage));
+        var postPage = new PostsPage(sliceOfPosts, page);
+        ctx.render("posts/index.jte", model("page", postPage));
     }
 
     public static void show(Context ctx) {
