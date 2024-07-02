@@ -20,24 +20,24 @@ content = @`
                 </ul>
             </nav>
 
-            <%--            <nav aria-label="Page navigation example">--%>
-            <%--                <ul class="pagination">--%>
-            <%--                    <li class="page-item">--%>
-            <%--                        <a class="page-link" href="?page=${page.getPage() < 2 ? 1 : page.getPage() - 1}"--%>
-            <%--                           aria-label="Previous">--%>
-            <%--                            <span aria-hidden="true">&laquo;</span>--%>
-            <%--                        </a>--%>
-            <%--                    </li>--%>
-            <%--                    <li class="page-item"><a class="page-link"--%>
-            <%--                                             href="${NamedRoutes.postsPath()}?page=${page.getPage()}">${page.getPage()}</a>--%>
-            <%--                    </li>--%>
-            <%--                    <li class="page-item">--%>
-            <%--                        <a class="page-link" href="?page=${page.getPage() + 1}" aria-label="Next">--%>
-            <%--                            <span aria-hidden="true">&raquo;</span>--%>
-            <%--                        </a>--%>
-            <%--                    </li>--%>
-            <%--                </ul>--%>
-            <%--            </nav>--%>
+<%--            <nav aria-label="Page navigation example">--%>
+<%--                <ul class="pagination">--%>
+<%--                    <li class="page-item">--%>
+<%--                        <a class="page-link" href="?page=${page.getPage() < 2 ? 1 : page.getPage() - 1}"--%>
+<%--                           aria-label="Previous">--%>
+<%--                            <span aria-hidden="true">&laquo;</span>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                    <li class="page-item"><a class="page-link"--%>
+<%--                                             href="${NamedRoutes.postsPath()}?page=${page.getPage()}">${page.getPage()}</a>--%>
+<%--                    </li>--%>
+<%--                    <li class="page-item">--%>
+<%--                        <a class="page-link" href="?page=${page.getPage() + 1}" aria-label="Next">--%>
+<%--                            <span aria-hidden="true">&raquo;</span>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                </ul>--%>
+<%--            </nav>--%>
 
             @for(var post : page.getPosts())
                 <div>

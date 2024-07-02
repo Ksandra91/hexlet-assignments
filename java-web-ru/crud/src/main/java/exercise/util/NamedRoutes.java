@@ -8,7 +8,7 @@ public class NamedRoutes {
 
     // BEGIN
     public static String postsPath() {
-        return "/posts/index";
+        return "/posts";
     }
     // END
 
